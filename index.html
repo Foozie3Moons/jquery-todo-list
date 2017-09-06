@@ -12,18 +12,25 @@
       <h1>Matt's Todo List</h1>
     </header>
     <div class="list">
-      <ul>
+      <ul id="sortable">
       </ul>
     </div>
     <div class="list-form">
       <form>
-        <label for="add-text">Add To List</label>
-        <input type="text" name="add-text" id="add-text" />
-        <input type="button" name="submit-to-list" id="submit-to-list" value="Add" />
+        <div class="form-input-wrapper">
+          <input type="text" name="add-text" id="text" placeholder="Add New Text" autofocus />
+        </div>
+        <!-- <div class="form-input-wrapper">
+          <label for="add-text"><input type="button" name="submit" id="submit" value="Add" /></label>
+        </div> -->
       </form>
     </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="js/script.js"></script>
+  <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
 </body>
 </html>

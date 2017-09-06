@@ -1,36 +1,64 @@
 $(document).ready(function() {
+  console.log('DOM ready');
+  console.log('javascript loaded');
+  console.log('jQuery loaded');
 
-  console.log("DOM ready");
-  console.log("javascript loaded");
-  console.log("jQuery loaded");
+  var list = $('ul');
+  // var removedItem;
+  var id = 0;
 
-  var list = $("ul");
-  var id = 1;
-
-  $("#submit-to-list").on("click", addListItem);
-  list.on('click', 'button', function() {
-    text = $(this).text();
-    removeListItem(text);
+  $(function() {
   });
 
-  function addListItem() {
-    console.log("id");
-    list.append("<li id=" + id + ">" + textInput() + "<button class='delete'>" + id + "</button></li>");
-    id += 1;
-  }
+  $(function() {
+    $('#sortable').sortable();
+    $('#sortable').disableSelection();
+    $('form').submit(function() { return false; });
+  });
 
   function textInput() {
-    text = $("#add-text").val();
+    var text = $('#text').val();
     return text;
   }
 
-  function removeListItem(id) {
-    $("#" + id).remove();
+  // unnecessary function at this time //
+  // function resetIds() {
+  //   var listItems = list.children();
+  //   console.log(listItems[0]);
+  //   for (var i = 0; i < listItems.length; i++) {
+  //     listItems[i].id = i;
+  //     var button = $(listItems[i]).find('button');
+  //     $(button).data('id', i);
+  //   }
+  // }
+
+  function addListItem() {
+    console.log('id');
+    if (textInput() === "") {
+      $("input").prop('required',true);
+    } else {
+      list.append(
+        '<li id=' + id + '>' +
+          "<button class='delete' data-id=" + id + '>x</button>' +
+          '<p>' + textInput() + '</p>' +
+        '</li>');
+      $('#text').val('');
+      id += 1;
+      $("input").prop('required',false);
+    }
   }
 
-  function notify() {
-    alert( "clicked" );
-  }
-  // $( "input[type="button"]" ).on( "click", notify );
+  // $('#submit').on('click', addListItem);
+  list.on('mouseup', 'button', function(e) {
+    $(this).parent().remove(e.target.id);
+  });
 
+  $(document).keypress(function(e) {
+    if (e.which === 13) {
+      addListItem();
+    }
+  });
+  $(document).click(function() {
+    $("#text").focus();
+  });
 });
