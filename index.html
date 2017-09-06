@@ -4,8 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hello Front-End</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
-  <h1>Hello Front-End</h1>
+  <div class="wrapper">
+    <header>
+      <h1>Matt's Todo List</h1>
+    </header>
+    <div class="list">
+      <ul>
+      </ul>
+    </div>
+    <div class="list-form">
+      <form>
+        <label for="add-text">Add To List</label>
+        <input type="text" name="add-text" id="add-text" />
+        <input type="button" name="submit-to-list" id="submit-to-list" value="Add" />
+      </form>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
